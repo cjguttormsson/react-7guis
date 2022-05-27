@@ -10,7 +10,7 @@ const fToC = (f: number) => ((f - 32.0) * 5) / 9;
  *
  * @param props unused
  */
-const TemperatureConverter = ({}) => {
+const TemperatureConverter = (props: any) => {
   const [celcius, setCelcius] = useState("-40.0");
   const [fahrenheit, setFahrenheit] = useState("-40.0");
 

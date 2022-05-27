@@ -2,7 +2,7 @@ import { useState } from "react";
 import Counter from "./Counter";
 import TemperatureConverter from "./TemperatureConverter";
 
-const guis: (({}) => JSX.Element)[] = [Counter, TemperatureConverter];
+const guis: ((props: any) => JSX.Element)[] = [Counter, TemperatureConverter];
 
 /**
  * A launcher for the seven actual GUIs. Initially shows a selection, then renders whichever GUI was
@@ -10,10 +10,8 @@ const guis: (({}) => JSX.Element)[] = [Counter, TemperatureConverter];
  *
  * @param props unused
  */
-const Launcher = ({}) => {
-  const [SelectedGui, SetSelectedGui] = useState<(({}) => JSX.Element) | null>(
-    null
-  );
+const Launcher = (props: any) => {
+  const [SelectedGui, SetSelectedGui] = useState<((props: any) => JSX.Element) | null>(null);
 
   return SelectedGui === null ? (
     <>
