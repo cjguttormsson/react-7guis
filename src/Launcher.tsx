@@ -18,6 +18,7 @@ const Launcher = (props: any) => {
       {guis.map((gui) => (
         <p key={gui.name}>
           <button
+            className="btn"
             onClick={() => {
               SetSelectedGui(() => gui);
               console.log(`SelectGui is ${gui}`);
@@ -33,7 +34,9 @@ const Launcher = (props: any) => {
       <SelectedGui />
 
       <p>
-        <button onClick={() => SetSelectedGui(null)}>Return to Launcher</button>
+        <button className="btn" onClick={() => SetSelectedGui(null)}>
+          Return to Launcher
+        </button>
       </p>
     </>
   );

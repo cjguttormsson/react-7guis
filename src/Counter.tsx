@@ -8,6 +8,7 @@ const Counter = (props: any) => {
       <p>The count is {count}</p>
       <p>
         <button
+          className="btn"
           onClick={() => {
             setCount((c) => c + 1);
           }}
