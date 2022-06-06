@@ -6,7 +6,7 @@ const Counter = (props: any) => {
   return (
     <div className="row justify-content-center">
       <div className="col-3">
-        <div className="input-group m2">
+        <div className="input-group">
           <input
             aria-label="Current Count"
             className="form-control"

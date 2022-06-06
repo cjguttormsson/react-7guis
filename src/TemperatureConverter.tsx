@@ -42,7 +42,7 @@ const TemperatureConverter = (props: any) => {
   return (
     <div className="row justify-content-center">
       <div className="col-6">
-        <div className="input-group m2">
+        <div className="input-group">
           <input
             aria-describedby="label-celsius"
             aria-label="Celsius"
