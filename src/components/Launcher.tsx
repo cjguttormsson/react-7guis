@@ -1,12 +1,13 @@
 import { useState } from "react";
 import Counter from "./Counter";
+import FlightBooker from "./FlightBooker";
 import TemperatureConverter from "./TemperatureConverter";
 
 // const guis: ((props: any) => JSX.Element)[] = [Counter, TemperatureConverter];
 const guis: [string, ((props: any) => JSX.Element) | null][] = [
   ["Counter", Counter],
   ["Temperature Converter", TemperatureConverter],
-  ["Flight Booker", null],
+  ["Flight Booker", FlightBooker],
   ["Timer", null],
   ["Crud", null],
   ["Circle Drawer", null],
