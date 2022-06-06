@@ -2,7 +2,16 @@ import { useState } from "react";
 import Counter from "./Counter";
 import TemperatureConverter from "./TemperatureConverter";
 
-const guis: ((props: any) => JSX.Element)[] = [Counter, TemperatureConverter];
+// const guis: ((props: any) => JSX.Element)[] = [Counter, TemperatureConverter];
+const guis: [string, ((props: any) => JSX.Element) | null][] = [
+  ["Counter", Counter],
+  ["Temperature Converter", TemperatureConverter],
+  ["Flight Booker", null],
+  ["Timer", null],
+  ["Crud", null],
+  ["Circle Drawer", null],
+  ["Cells", null]
+];
 
 /**
  * A launcher for the seven actual GUIs. Initially shows a selection, then renders whichever GUI was
@@ -11,30 +20,35 @@ const guis: ((props: any) => JSX.Element)[] = [Counter, TemperatureConverter];
  * @param props unused
  */
 const Launcher = (props: any) => {
-  const [SelectedGui, SetSelectedGui] = useState<((props: any) => JSX.Element) | null>(null);
+  const [SelectedGui, SetSelectedGui] = useState<(props: any) => JSX.Element>(() => Counter);
 
-  return SelectedGui === null ? (
+  return (
     <>
-      {guis.map((gui) => (
-        <p key={gui.name}>
-          <button
-            onClick={() => {
-              SetSelectedGui(() => gui);
-              console.log(`SelectGui is ${gui}`);
-            }}
-          >
-            {gui.name}
-          </button>
-        </p>
-      ))}
-    </>
-  ) : (
-    <>
+      <div className="mb-3">
+        <ul className="nav nav-tabs">
+          {guis.map(([name, gui]) => (
+            <li className="nav-item" key={name}>
+              <a
+                className={
+                  "nav-link" +
+                  (gui === SelectedGui ? " active" : "") +
+                  (gui === null ? " disabled" : "")
+                }
+                aria-current={gui === SelectedGui ? "page" : undefined}
+                onClick={() => {
+                  if (gui !== null) {
+                    SetSelectedGui(() => gui);
+                  }
+                }}
+                href={"#" + name}
+              >
+                {name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
       <SelectedGui />
-
-      <p>
-        <button onClick={() => SetSelectedGui(null)}>Return to Launcher</button>
-      </p>
     </>
   );
 };
