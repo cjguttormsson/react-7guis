@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useDebugValue, useState } from "react";
 import Counter from "./Counter";
 import FlightBooker from "./FlightBooker";
 import TemperatureConverter from "./TemperatureConverter";
@@ -11,8 +11,12 @@ const guis: [string, ((props: any) => JSX.Element) | null][] = [
   ["Timer", null],
   ["Crud", null],
   ["Circle Drawer", null],
-  ["Cells", null]
+  ["Cells", null],
 ];
+
+interface LauncherProps {
+  location: string
+}
 
 /**
  * A launcher for the seven actual GUIs. Initially shows a selection, then renders whichever GUI was
@@ -20,8 +24,16 @@ const guis: [string, ((props: any) => JSX.Element) | null][] = [
  *
  * @param props unused
  */
-const Launcher = (props: any) => {
-  const [SelectedGui, SetSelectedGui] = useState<(props: any) => JSX.Element>(() => Counter);
+const Launcher = ({ location }: LauncherProps) => {
+  const [SelectedGui, SetSelectedGui] = useState<(props: any) => JSX.Element>(() => {
+    return (
+      guis
+        .filter(([name, gui]) => name === location)
+        .map(([name, gui]) => gui)
+        .at(0) || Counter
+    );
+  });
+  useDebugValue(location);
 
   return (
     <>
