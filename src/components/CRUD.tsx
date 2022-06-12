@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 
 const CRUD = () => {
   const [names, setNames] = useState<[string, string][]>([
-    ["Hands", "Emil"],
+    ["Hans", "Emil"],
     ["Max", "Mustermann"],
     ["Roman", "Tisch"]
   ]);
