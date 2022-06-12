@@ -7,10 +7,8 @@ const fToC = (f: number) => ((f - 32.0) * 5) / 9;
 /**
  * A utility to convert between Celsius and Fahrenheit in two text boxes. The values are truncated
  * to one decimal point.
- *
- * @param props unused
  */
-const TemperatureConverter = (props: any) => {
+const TemperatureConverter = () => {
   const [celsius, setCelsius] = useState("-40.0");
   const [fahrenheit, setFahrenheit] = useState("-40.0");
 

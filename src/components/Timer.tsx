@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-const Timer = (props: any) => {
+const Timer = () => {
   const [startTimeMs, setStartTimeMs] = useState(Date.now());
   const [currentTimeMs, setCurrentTimeMs] = useState(Date.now());
   const [durationMs, setDurationMs] = useState(10_000);

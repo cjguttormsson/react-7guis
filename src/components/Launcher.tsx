@@ -1,4 +1,4 @@
-import { useDebugValue, useState } from "react";
+import { useState } from "react";
 import Counter from "./Counter";
 import CRUD from "./CRUD";
 import FlightBooker from "./FlightBooker";
@@ -24,16 +24,15 @@ interface LauncherProps {
  * A launcher for the seven actual GUIs. Initially shows a selection, then renders whichever GUI was
  * selected and shows a button to return to the launcher.
  *
- * @param props unused
+ * @param props Optionally contains the name of the component that should be rendered
  */
 const Launcher = ({ location }: LauncherProps) => {
-  const [SelectedGui, SetSelectedGui] = useState<(props: any) => JSX.Element>(
+  const [SelectedGui, SetSelectedGui] = useState<(props: any) => JSX.Element>(() =>
     guis
-      .filter(([name, _]) => name === location)
-      .map(([_, gui]) => gui)
+      .filter(([name, gui]) => name === location && gui !== null)
+      .map(([, gui]) => gui)
       .at(0) || Counter
   );
-  useDebugValue(location);
 
   return (
     <>

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { setConstantValue } from "typescript";
 
 type FlightType = "One Way" | "Round Trip";
 
@@ -13,9 +12,9 @@ function datesAreValid(departureDate: string, returnDate: string, flightType: Fl
   if (depMatch === null || retMatch === null) {
     return false;
   } else {
-    // These are all positive, so no need to convert to numbers to deal with negative sign
-    let [unusedWholeDepMatch, depDay, depMonth, depYear] = depMatch;
-    let [unusedWholeRetMatch, retDay, retMonth, retYear] = retMatch;
+    // These are all positive, so no need to convert into numbers to deal with negative sign
+    let [, depDay, depMonth, depYear] = depMatch;
+    let [, retDay, retMonth, retYear] = retMatch;
     // Compare dates as tuples of (year, month, day)
     let depDate: [string, string, string] = [depYear, depMonth, depDay];
     let retDate: [string, string, string] = [retYear, retMonth, retDay];
@@ -24,7 +23,7 @@ function datesAreValid(departureDate: string, returnDate: string, flightType: Fl
   }
 }
 
-const FlightBooker = (props: any) => {
+const FlightBooker = () => {
   let [flightType, setFlightType] = useState<FlightType>("One Way");
   let [departureDateString, setDepartureDateString] = useState(() => {
     // Initialize to today

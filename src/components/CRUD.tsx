@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 
-const CRUD = (_: any) => {
+const CRUD = () => {
   const [names, setNames] = useState<[string, string][]>([
     ["Hands", "Emil"],
     ["Max", "Mustermann"],
