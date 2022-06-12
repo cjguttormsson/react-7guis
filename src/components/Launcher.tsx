@@ -2,13 +2,14 @@ import { useDebugValue, useState } from "react";
 import Counter from "./Counter";
 import FlightBooker from "./FlightBooker";
 import TemperatureConverter from "./TemperatureConverter";
+import Timer from "./Timer";
 
 // const guis: ((props: any) => JSX.Element)[] = [Counter, TemperatureConverter];
 const guis: [string, ((props: any) => JSX.Element) | null][] = [
   ["Counter", Counter],
   ["Temperature Converter", TemperatureConverter],
   ["Flight Booker", FlightBooker],
-  ["Timer", null],
+  ["Timer", Timer],
   ["Crud", null],
   ["Circle Drawer", null],
   ["Cells", null],
