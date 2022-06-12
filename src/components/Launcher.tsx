@@ -1,5 +1,6 @@
 import { useDebugValue, useState } from "react";
 import Counter from "./Counter";
+import CRUD from "./CRUD";
 import FlightBooker from "./FlightBooker";
 import TemperatureConverter from "./TemperatureConverter";
 import Timer from "./Timer";
@@ -10,13 +11,13 @@ const guis: [string, ((props: any) => JSX.Element) | null][] = [
   ["Temperature Converter", TemperatureConverter],
   ["Flight Booker", FlightBooker],
   ["Timer", Timer],
-  ["Crud", null],
+  ["CRUD", CRUD],
   ["Circle Drawer", null],
-  ["Cells", null],
+  ["Cells", null]
 ];
 
 interface LauncherProps {
-  location: string
+  location: string;
 }
 
 /**
@@ -26,14 +27,12 @@ interface LauncherProps {
  * @param props unused
  */
 const Launcher = ({ location }: LauncherProps) => {
-  const [SelectedGui, SetSelectedGui] = useState<(props: any) => JSX.Element>(() => {
-    return (
-      guis
-        .filter(([name, gui]) => name === location)
-        .map(([name, gui]) => gui)
-        .at(0) || Counter
-    );
-  });
+  const [SelectedGui, SetSelectedGui] = useState<(props: any) => JSX.Element>(
+    guis
+      .filter(([name, _]) => name === location)
+      .map(([_, gui]) => gui)
+      .at(0) || Counter
+  );
   useDebugValue(location);
 
   return (
