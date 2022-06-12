@@ -31,7 +31,7 @@ const FlightBooker = () => {
     return [
       today.getDate().toString().padStart(2, "0"),
       (today.getMonth() + 1).toString().padStart(2, "0"),
-      today.getFullYear().toString(),
+      today.getFullYear().toString()
     ].join(".");
   });
   let [returnDateString, setReturnDateString] = useState(() => {
@@ -40,7 +40,7 @@ const FlightBooker = () => {
     return [
       tomorrow.getDate().toString().padStart(2, "0"),
       (tomorrow.getMonth() + 1).toString().padStart(2, "0"),
-      tomorrow.getFullYear().toString(),
+      tomorrow.getFullYear().toString()
     ].join(".");
   });
   let [bookedMessage, setBookedMessage] = useState<string | null>(null);
@@ -52,13 +52,10 @@ const FlightBooker = () => {
           <select
             className="form-select"
             onChange={(e) => setFlightType(e.target.value as FlightType)}
+            value={flightType}
           >
-            <option selected={flightType === "One Way"} value="One Way">
-              One Way
-            </option>
-            <option selected={flightType === "Round Trip"} value="Round Trip">
-              Round Trip
-            </option>
+            <option value="One Way">One Way</option>
+            <option value="Round Trip">Round Trip</option>
           </select>
         </div>
       </div>
@@ -91,11 +88,11 @@ const FlightBooker = () => {
             disabled={!datesAreValid(departureDateString, returnDateString, flightType)}
             onClick={() => {
               if (flightType === "One Way") {
-                setBookedMessage(`Booked a one-way flight on ${departureDateString}`);
+                setBookedMessage(`"Booked" a one-way flight on ${departureDateString}`);
               } else {
                 setBookedMessage(
-                  `Booked a round-trip flight leaving on ${departureDateString} and ` +
-                    `returning on ${returnDateString}`
+                  `"Booked" a round-trip flight leaving on ${departureDateString} and ` +
+                  `returning on ${returnDateString}`
                 );
               }
             }}
