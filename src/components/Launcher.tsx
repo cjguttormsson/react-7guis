@@ -4,6 +4,7 @@ import CRUD from "./CRUD";
 import FlightBooker from "./FlightBooker";
 import TemperatureConverter from "./TemperatureConverter";
 import Timer from "./Timer";
+import CircleDrawer from "./CircleDrawer";
 
 // const guis: ((props: any) => JSX.Element)[] = [Counter, TemperatureConverter];
 const guis: [string, ((props: any) => JSX.Element) | null][] = [
@@ -12,7 +13,7 @@ const guis: [string, ((props: any) => JSX.Element) | null][] = [
   ["Flight Booker", FlightBooker],
   ["Timer", Timer],
   ["CRUD", CRUD],
-  ["Circle Drawer", null],
+  ["Circle Drawer", CircleDrawer],
   ["Cells", null]
 ];
 
