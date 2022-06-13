@@ -23,7 +23,6 @@ function useHistory<T>(initialVal: T): [presentValue: T, setPresentValue: (newVa
     setFuture(future.slice(1));
   } : undefined;
 
-  console.log(past, presentValue, future);
   return [presentValue, setValue, undo, redo];
 }
 
