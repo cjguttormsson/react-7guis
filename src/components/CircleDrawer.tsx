@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import useHistory from "../useHistory";
 
 interface Circle {
   x: number,
@@ -7,7 +8,7 @@ interface Circle {
 }
 
 const CircleDrawer = () => {
-  const [circles, setCircles] = useState<Circle[]>([]);
+  const [circles, setCircles, undo, redo] = useHistory([] as Circle[]);
   const [circleBeingEdited, setCircleBeingEdited] = useState<Circle | null>(null);
   const [newRadius, setNewRadius] = useState(0.0);
   const circlesToDraw = useMemo(() => circles.map(circle => circle === circleBeingEdited ? {
@@ -17,6 +18,15 @@ const CircleDrawer = () => {
     [circles, circleBeingEdited, newRadius]);
 
   return <>
+    <div className="row justify-content-center mb-3">
+      <div className="col-auto">
+        <button className="btn btn-outline-primary" disabled={undo === undefined} onClick={() => undo?.()}>Undo
+        </button>
+      </div>
+      <div className="col-auto">
+        <button className="btn btn-primary" disabled={redo === undefined} onClick={() => redo?.()}>Redo</button>
+      </div>
+    </div>
     <div className="row justify-content-center">
       <div className="col-7">
         <style>{"circle:hover { fill: gray; }"}</style>
