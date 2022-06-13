@@ -38,7 +38,8 @@ const CircleDrawer = () => {
                const scale = (boundingClientRect.right - boundingClientRect.left) / 640;
                setCircles([...circles, { x: e.nativeEvent.offsetX / scale, y: e.nativeEvent.offsetY / scale, r: 40 }]);
              }}>
-          {circlesToDraw.map(c => <circle cx={c.x} cy={c.y} r={c.r} fill="white" stroke="black"
+          {circlesToDraw.map(c => <circle key={`${c.x},${c.y},${c.r}`} cx={c.x} cy={c.y} r={c.r} fill="white"
+                                          stroke="black"
                                           onContextMenuCapture={(e) => {
                                             e.preventDefault();
                                             setNewRadius(c.r);
