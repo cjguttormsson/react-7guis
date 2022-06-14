@@ -5,6 +5,7 @@ import FlightBooker from "./FlightBooker";
 import TemperatureConverter from "./TemperatureConverter";
 import Timer from "./Timer";
 import CircleDrawer from "./CircleDrawer";
+import Cells from "./Cells";
 
 // const guis: ((props: any) => JSX.Element)[] = [Counter, TemperatureConverter];
 const guis: [string, ((props: any) => JSX.Element) | null][] = [
@@ -14,7 +15,7 @@ const guis: [string, ((props: any) => JSX.Element) | null][] = [
   ["Timer", Timer],
   ["CRUD", CRUD],
   ["Circle Drawer", CircleDrawer],
-  ["Cells", null]
+  ["Cells", Cells]
 ];
 
 interface LauncherProps {
