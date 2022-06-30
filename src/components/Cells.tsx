@@ -2,7 +2,8 @@ import React, { ChangeEventHandler, useCallback, useState } from "react";
 
 const ROWS = [...Array(100).keys()].map(i => `${i + 1}`);
 
-const COLS = [...Array(26).keys()].map((i) => String.fromCharCode(65 + i));
+let CHAR_CODE_A = 65;
+const COLS = [...Array(26).keys()].map((i) => String.fromCharCode(CHAR_CODE_A + i));
 
 const Cell = React.memo(() => {
   const [value, setValue] = useState<string | undefined>(undefined);
